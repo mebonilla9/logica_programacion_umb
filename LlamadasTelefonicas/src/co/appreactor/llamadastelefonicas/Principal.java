@@ -56,6 +56,10 @@ public class Principal {
      * @param args
      */
     public static void main(String[] args) {
+        /**
+         * Creacion del objeto de la clase principal y su inmediata llamada del
+         * metodo iniciar
+         */
         new Principal().iniciar();
     }
 
@@ -240,14 +244,24 @@ public class Principal {
     }
 
     /**
+     * Representa el menu de la aplicacion, cada opcion que el usuario puede
+     * digitar y retorna la opcion escrita por el usuario
      *
-     * @return
+     * @return El caracter digitado por el usuario
      */
     private char menuPrincipal() {
+        /**
+         * Impresion de pantalla por cada opcion disponible
+         */
         System.out.println("I. Llamada Internacional");
         System.out.println("N. Llamada Nacional");
         System.out.println("L. Llamada Local");
         System.out.println("X. Salir");
+        /**
+         * Retorno del valor digitado por el usuario, usando la libreria del
+         * SuperTeclado -- Para los que no tienen esa libreria deben usar el
+         * <code>Scanner</code>
+         */
         return Teclado.leerCaracter();
     }
 
