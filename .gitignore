@@ -63,3 +63,15 @@ nbactions.xml
 
 
 # End of https://www.gitignore.io/api/java,macos,netbeans
+/Matrices/nbproject/private/
+/Palindromo/nbproject/private/
+/PruebaGoogleAnalitycs/nbproject/private/
+/DiagnosticoDiferencial/nbproject/private/
+/EjercicioExcepciones/nbproject/private/
+/GuiaCuatroLogicaUMB/nbproject/private/
+/NominaGrafica/nbproject/private/
+/Tamagochi/nbproject/private/
+/DiagnosticoGui/nbproject/private/
+/WebApplication1/nbproject/private/
+/Anagrama/nbproject/private/
+/TestMav/target/

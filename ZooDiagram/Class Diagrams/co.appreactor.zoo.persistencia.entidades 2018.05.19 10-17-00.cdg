@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="co.appreactor.zoo.persistencia.entidades">
+  <ClassDiagramComponents>
+    <Class name="Guia" package="co.appreactor.zoo.persistencia.entidades" visibility="public" xPosition="81.0" yPosition="190.0">
+      <Fields>
+        <Field name="intinerariosAsignados" type="List&lt;GuiaIntinerario&gt;" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Personal" package="co.appreactor.zoo.persistencia.entidades" visibility="public" xPosition="329.0" yPosition="20.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="public"/>
+        <Field name="direccion" type="String" visibility="public"/>
+        <Field name="telefono" type="String" visibility="public"/>
+        <Field name="fechaIngreso" type="LocalDate" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="CuidadorEspecie" package="co.appreactor.zoo.persistencia.entidades" visibility="public" xPosition="685.0" yPosition="20.0">
+      <Fields>
+        <Field name="cuidador" type="Cuidador" visibility="public"/>
+        <Field name="especie" type="Especie" visibility="public"/>
+        <Field name="fechaAsignada" type="LocalDate" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Zona" package="co.appreactor.zoo.persistencia.entidades" visibility="public" xPosition="851.0" yPosition="190.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="public"/>
+        <Field name="extension" type="double" visibility="public"/>
+        <Field name="especies" type="List&lt;Especie&gt;" visibility="public"/>
+        <Field name="intinerarios" type="List&lt;Intinerario&gt;" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Especie" package="co.appreactor.zoo.persistencia.entidades" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="public"/>
+        <Field name="nombreCientifico" type="String" visibility="public"/>
+        <Field name="descripcion" type="String" visibility="public"/>
+        <Field name="fechaAsignacion" type="LocalDate" visibility="public"/>
+        <Field name="habitats" type="List&lt;Habitat&gt;" visibility="public"/>
+        <Field name="zona" type="Zona" visibility="public"/>
+        <Field name="cuidadoresAsignados" type="List&lt;CuidadorEspecie&gt;" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Cuidador" package="co.appreactor.zoo.persistencia.entidades" visibility="public" xPosition="470.0" yPosition="253.0">
+      <Fields>
+        <Field name="especiesAsignadas" type="List&lt;CuidadorEspecie&gt;" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Habitat" package="co.appreactor.zoo.persistencia.entidades" visibility="public" xPosition="1304.0" yPosition="369.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="public"/>
+        <Field name="clima" type="String" visibility="public"/>
+        <Field name="tipoVegetacion" type="String" visibility="public"/>
+        <Field name="continentes" type="List&lt;String&gt;" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Intinerario" package="co.appreactor.zoo.persistencia.entidades" visibility="public" xPosition="851.0" yPosition="485.0">
+      <Fields>
+        <Field name="codigo" type="long" visibility="public"/>
+        <Field name="hora" type="LocalTime" visibility="public"/>
+        <Field name="duracion" type="LocalTime" visibility="public"/>
+        <Field name="longitud" type="double" visibility="public"/>
+        <Field name="maxVisitantes" type="int" visibility="public"/>
+        <Field name="zonas" type="List&lt;Zona&gt;" visibility="public"/>
+        <Field name="especies" type="List&lt;Especie&gt;" visibility="public"/>
+        <Field name="guiasAsignados" type="List&lt;GuiaIntinerario&gt;" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="GuiaIntinerario" package="co.appreactor.zoo.persistencia.entidades" visibility="public" xPosition="262.0" yPosition="412.0">
+      <Fields>
+        <Field name="guia" type="Guia" visibility="public"/>
+        <Field name="intinerario" type="Intinerario" visibility="public"/>
+        <Field name="hora" type="LocalTime" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="especies" source="co.appreactor.zoo.persistencia.entidades.Intinerario" target="co.appreactor.zoo.persistencia.entidades.Especie" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Especie&gt;"/>
+    <HasRelation name="cuidador" source="co.appreactor.zoo.persistencia.entidades.CuidadorEspecie" target="co.appreactor.zoo.persistencia.entidades.Cuidador" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="especie" source="co.appreactor.zoo.persistencia.entidades.CuidadorEspecie" target="co.appreactor.zoo.persistencia.entidades.Especie" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="zonas" source="co.appreactor.zoo.persistencia.entidades.Intinerario" target="co.appreactor.zoo.persistencia.entidades.Zona" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Zona&gt;"/>
+    <HasRelation name="zona" source="co.appreactor.zoo.persistencia.entidades.Especie" target="co.appreactor.zoo.persistencia.entidades.Zona" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="intinerariosAsignados" source="co.appreactor.zoo.persistencia.entidades.Guia" target="co.appreactor.zoo.persistencia.entidades.GuiaIntinerario" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;GuiaIntinerario&gt;"/>
+    <HasRelation name="intinerario" source="co.appreactor.zoo.persistencia.entidades.GuiaIntinerario" target="co.appreactor.zoo.persistencia.entidades.Intinerario" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="co.appreactor.zoo.persistencia.entidades.Guia" target="co.appreactor.zoo.persistencia.entidades.Personal"/>
+    <HasRelation name="guia" source="co.appreactor.zoo.persistencia.entidades.GuiaIntinerario" target="co.appreactor.zoo.persistencia.entidades.Guia" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="habitats" source="co.appreactor.zoo.persistencia.entidades.Especie" target="co.appreactor.zoo.persistencia.entidades.Habitat" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Habitat&gt;"/>
+    <HasRelation name="intinerarios" source="co.appreactor.zoo.persistencia.entidades.Zona" target="co.appreactor.zoo.persistencia.entidades.Intinerario" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Intinerario&gt;"/>
+    <HasRelation name="guiasAsignados" source="co.appreactor.zoo.persistencia.entidades.Intinerario" target="co.appreactor.zoo.persistencia.entidades.GuiaIntinerario" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;GuiaIntinerario&gt;"/>
+    <HasRelation name="cuidadoresAsignados" source="co.appreactor.zoo.persistencia.entidades.Especie" target="co.appreactor.zoo.persistencia.entidades.CuidadorEspecie" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;CuidadorEspecie&gt;"/>
+    <HasRelation name="especies" source="co.appreactor.zoo.persistencia.entidades.Zona" target="co.appreactor.zoo.persistencia.entidades.Especie" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Especie&gt;"/>
+    <IsRelation name="is" source="co.appreactor.zoo.persistencia.entidades.Cuidador" target="co.appreactor.zoo.persistencia.entidades.Personal"/>
+    <HasRelation name="especiesAsignadas" source="co.appreactor.zoo.persistencia.entidades.Cuidador" target="co.appreactor.zoo.persistencia.entidades.CuidadorEspecie" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;CuidadorEspecie&gt;"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

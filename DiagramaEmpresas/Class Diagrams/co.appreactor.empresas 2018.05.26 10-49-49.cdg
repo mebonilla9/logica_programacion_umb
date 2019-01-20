@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="co.appreactor.empresas">
+  <ClassDiagramComponents>
+    <Class name="Pais" package="co.appreactor.empresas" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="public"/>
+        <Field name="pib" type="double" visibility="public"/>
+        <Field name="numeroHabitantes" type="int" visibility="public"/>
+        <Field name="capital" type="String" visibility="public"/>
+        <Field name="empresas" type="EmpresaPais" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Empresa" package="co.appreactor.empresas" visibility="public" xPosition="390.0" yPosition="255.0">
+      <Fields>
+        <Field name="grupo" type="GrupoEmpresarial" visibility="public"/>
+        <Field name="fechaEntradaGrupo" type="LocalDate" visibility="public"/>
+        <Field name="facturacionAnual" type="double" visibility="public"/>
+        <Field name="sedePrincipal" type="Pais" visibility="public"/>
+        <Field name="vendedores" type="List&lt;Vendedor&gt;" visibility="public"/>
+        <Field name="areas" type="AreaEmpresa" visibility="public"/>
+        <Field name="paises" type="EmpresaPais" visibility="public"/>
+        <Field name="asesores" type="AsesorEmpresa" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="EmpresaPais" package="co.appreactor.empresas" visibility="public" xPosition="390.0" yPosition="20.0">
+      <Fields>
+        <Field name="listaPaises" type="List&lt;Pais&gt;" visibility="public"/>
+        <Field name="listaEmpresas" type="List&lt;Empresa&gt;" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="GrupoEmpresarial" package="co.appreactor.empresas" visibility="public" xPosition="727.0" yPosition="20.0">
+      <Fields>
+        <Field name="empresasGrupo" type="List&lt;Empresa&gt;" visibility="public"/>
+        <Field name="asesores" type="AsesorGrupo" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Asesor" package="co.appreactor.empresas" visibility="public" xPosition="1137.0" yPosition="272.0">
+      <Fields>
+        <Field name="codigo" type="String" visibility="public"/>
+        <Field name="nombre" type="String" visibility="public"/>
+        <Field name="direccion" type="String" visibility="public"/>
+        <Field name="titulacion" type="String" visibility="public"/>
+        <Field name="areas" type="AsesorArea" visibility="public"/>
+        <Field name="empresas" type="AsesorEmpresa" visibility="public"/>
+        <Field name="gruposEmpresariales" type="AsesorGrupo" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Area" package="co.appreactor.empresas" visibility="public" xPosition="853.0" yPosition="588.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="public"/>
+        <Field name="descripcion" type="String" visibility="public"/>
+        <Field name="asesores" type="AsesorArea" visibility="public"/>
+        <Field name="empresas" type="AreaEmpresa" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="AsesorArea" package="co.appreactor.empresas" visibility="public" xPosition="1169.0" yPosition="588.0">
+      <Fields>
+        <Field name="listaAsesores" type="List&lt;Asesor&gt;" visibility="public"/>
+        <Field name="listaArea" type="List&lt;Area&gt;" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="AsesorGrupo" package="co.appreactor.empresas" visibility="public" xPosition="1125.0" yPosition="20.0">
+      <Fields>
+        <Field name="listaAsesores" type="List&lt;Asesor&gt;" visibility="public"/>
+        <Field name="listaGrupos" type="List&lt;GrupoEmpresarial&gt;" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="AreaEmpresa" package="co.appreactor.empresas" visibility="public" xPosition="390.0" yPosition="588.0">
+      <Fields>
+        <Field name="listaAreas" type="List&lt;Area&gt;" visibility="public"/>
+        <Field name="listaEmpresas" type="List&lt;Empresa&gt;" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Vendedor" package="co.appreactor.empresas" visibility="public" xPosition="20.0" yPosition="328.0">
+      <Fields>
+        <Field name="codigo" type="String" visibility="public"/>
+        <Field name="fechaCaptacion" type="LocalDate" visibility="public"/>
+        <Field name="nombre" type="String" visibility="public"/>
+        <Field name="direccion" type="String" visibility="public"/>
+        <Field name="jefe" type="Vendedor" visibility="public"/>
+        <Field name="empresa" type="Empresa" visibility="public"/>
+        <Field name="subordinados" type="List&lt;Vendedor&gt;" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="AsesorEmpresa" package="co.appreactor.empresas" visibility="public" xPosition="792.0" yPosition="357.0">
+      <Fields>
+        <Field name="listaAsesores" type="List&lt;Asesor&gt;" visibility="public"/>
+        <Field name="listaEmpresas" type="List&lt;Empresa&gt;" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="areas" source="co.appreactor.empresas.Asesor" target="co.appreactor.empresas.AsesorArea" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="empresas" source="co.appreactor.empresas.Area" target="co.appreactor.empresas.AreaEmpresa" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="empresas" source="co.appreactor.empresas.Asesor" target="co.appreactor.empresas.AsesorEmpresa" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="listaAsesores" source="co.appreactor.empresas.AsesorArea" target="co.appreactor.empresas.Asesor" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Asesor&gt;"/>
+    <HasRelation name="subordinados" source="co.appreactor.empresas.Vendedor" target="co.appreactor.empresas.Vendedor" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Vendedor&gt;"/>
+    <HasRelation name="paises" source="co.appreactor.empresas.Empresa" target="co.appreactor.empresas.EmpresaPais" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="empresasGrupo" source="co.appreactor.empresas.GrupoEmpresarial" target="co.appreactor.empresas.Empresa" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Empresa&gt;"/>
+    <HasRelation name="sedePrincipal" source="co.appreactor.empresas.Empresa" target="co.appreactor.empresas.Pais" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="listaGrupos" source="co.appreactor.empresas.AsesorGrupo" target="co.appreactor.empresas.GrupoEmpresarial" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;GrupoEmpresarial&gt;"/>
+    <HasRelation name="listaAsesores" source="co.appreactor.empresas.AsesorGrupo" target="co.appreactor.empresas.Asesor" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Asesor&gt;"/>
+    <HasRelation name="empresa" source="co.appreactor.empresas.Vendedor" target="co.appreactor.empresas.Empresa" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="listaEmpresas" source="co.appreactor.empresas.EmpresaPais" target="co.appreactor.empresas.Empresa" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Empresa&gt;"/>
+    <HasRelation name="asesores" source="co.appreactor.empresas.GrupoEmpresarial" target="co.appreactor.empresas.AsesorGrupo" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="gruposEmpresariales" source="co.appreactor.empresas.Asesor" target="co.appreactor.empresas.AsesorGrupo" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="areas" source="co.appreactor.empresas.Empresa" target="co.appreactor.empresas.AreaEmpresa" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="vendedores" source="co.appreactor.empresas.Empresa" target="co.appreactor.empresas.Vendedor" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Vendedor&gt;"/>
+    <HasRelation name="asesores" source="co.appreactor.empresas.Empresa" target="co.appreactor.empresas.AsesorEmpresa" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="empresas" source="co.appreactor.empresas.Pais" target="co.appreactor.empresas.EmpresaPais" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="jefe" source="co.appreactor.empresas.Vendedor" target="co.appreactor.empresas.Vendedor" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="listaPaises" source="co.appreactor.empresas.EmpresaPais" target="co.appreactor.empresas.Pais" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Pais&gt;"/>
+    <HasRelation name="asesores" source="co.appreactor.empresas.Area" target="co.appreactor.empresas.AsesorArea" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="listaEmpresas" source="co.appreactor.empresas.AreaEmpresa" target="co.appreactor.empresas.Empresa" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Empresa&gt;"/>
+    <HasRelation name="listaAreas" source="co.appreactor.empresas.AreaEmpresa" target="co.appreactor.empresas.Area" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Area&gt;"/>
+    <HasRelation name="listaAsesores" source="co.appreactor.empresas.AsesorEmpresa" target="co.appreactor.empresas.Asesor" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Asesor&gt;"/>
+    <HasRelation name="listaEmpresas" source="co.appreactor.empresas.AsesorEmpresa" target="co.appreactor.empresas.Empresa" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Empresa&gt;"/>
+    <HasRelation name="grupo" source="co.appreactor.empresas.Empresa" target="co.appreactor.empresas.GrupoEmpresarial" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="listaArea" source="co.appreactor.empresas.AsesorArea" target="co.appreactor.empresas.Area" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Area&gt;"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
